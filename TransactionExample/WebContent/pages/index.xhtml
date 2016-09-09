@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>JSF Login</title>
+</h:head>
+<h:body>
+
+	<f:facet name="last">
+		<h:outputStylesheet library="css" name="prime-faces.overrides.css" />
+
+	</f:facet>
+	<h:form>
+		<p>User: {userController.user.login}</p>
+		<p:commandLink id="logout" action="#{userController.logOut}"
+			value="Logout" />
+		<br />
+		<p:commandLink id="admin" action="#{userController.admin}"
+			value="Admin" ajax="false" />
+	</h:form>
+</h:body>
+</html>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<!-- <h:outputStylesheet library="css" name="sistema.css" /> -->
+	<title>JSF Login Register</title>
+</h:head>
+
+<h:body>
+	<h:form>
+		<p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+
+		<p:dialog header="Register" widgetVar="dlg" resizable="false"
+			visible="true" modal="true" closable="false" draggable="false">
+			<h:panelGrid columns="2" cellpadding="5">
+				<h:outputLabel for="username" value="Username:" />
+				<p:inputText id="username"
+					value="#{loginController.usernameOrEmail}" required="true"
+					label="username" />
+
+				<h:outputLabel for="password" value="Password:" />
+				<p:password id="password" value="#{loginController.password}"
+					required="true" label="password" />
+
+				<h:outputLabel for="email" value="Email:" />
+				<p:inputText id="email" value="#{loginController.email}"
+					required="true" label="email" />
+
+				<h:outputLabel for="role" value="Role:" />
+				<p:selectOneMenu id="role" value="#{loginController.role}"
+					required="true">
+					<f:selectItem itemLabel="Select Role" itemValue="" />
+					<f:selectItem itemLabel="Admin" itemValue="ADMIN" />
+					<f:selectItem itemLabel="User" itemValue="USER" />
+				</p:selectOneMenu>
+
+				<f:facet name="footer">
+					<p:commandButton value="Register" update="growl"
+						action="#{loginController.register}" />
+					<h:outputLink title="Login" value="index.xhtml">
+						Login
+					</h:outputLink>
+				</f:facet>
+			</h:panelGrid>
+		</p:dialog>
+	</h:form>
+</h:body>
+</html>
