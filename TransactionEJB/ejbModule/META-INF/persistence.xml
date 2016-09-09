@@ -3,23 +3,42 @@
 	xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	<persistence-unit name="JSF_LOGIN_PU" transaction-type="JTA">
-		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+		<!-- <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+		 -->
+		
+		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 		<jta-data-source>java:/JSFLoginDS</jta-data-source>
+		<!-- <provider>org.hibernate.ejb.HibernatePersistence</provider> -->
+		
 
 		<class>com.yog.transaction.ejbs.domains.User</class>
 		<class>com.yog.transaction.ejbs.domains.Log</class>
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 
 		<properties>
-<!-- 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
-			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/jsflogin_db" />
+<!-- 			
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/jsflogin_db" />
 			<property name="javax.persistence.jdbc.user" value="root" />
-			<property name="javax.persistence.jdbc.password" value="Kasak_2005" />
+			<property name="javax.persistence.jdbc.password" value="Click12345" />
  -->			
- 			<property name="eclipselink.ddl-generation" value="create-tables" />
-			<property name="eclipselink.ddl-generation.output-mode" value="database" />
-			<property name="eclipselink.logging.level" value="ALL" />
-			<property name="eclipselink.logging.parameters" value="true" />
+			<!-- <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/jsflogin_db" /> -->
+
+ 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLInnoDBDialect" />
+			<property name="hibernate.transaction.factory_class" value="org.hibernate.transaction.JTATransactionFactory"/>
+			<property name="hibernate.transaction.manager_lookup_class" value="org.hibernate.transaction.JBossTransactionManagerLookup" />
+<!-- 			<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
+			<property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/jsflogin_db" /> 
+ -->			
+ 			<!-- <property name="hibernate.connection.username" value="root" />
+			<property name="hibernate.connection.password" value="Click12345" /> -->
+			<property name="hibernate.connection.autocommit" value="true"/>
+			<property name="hibernate.hbm2ddl.auto" value="create"/>
+			<!-- <property name="hibernate.archive.autodetection" value="class" /> -->
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="true" />
+			<property name="hbm2ddl.auto" value="update" />
 		</properties>
 	</persistence-unit>
 </persistence>

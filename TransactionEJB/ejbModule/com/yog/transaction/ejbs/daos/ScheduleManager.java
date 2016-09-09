@@ -1,4 +1,4 @@
-package com.yog.transaction.ejbs.beans;
+package com.yog.transaction.ejbs.daos;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;

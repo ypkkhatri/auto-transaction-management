@@ -1,4 +1,4 @@
-package com.yog.transaction.ejbs.beans;
+package com.yog.transaction.ejbs.daos;
 
 import java.io.Serializable;
 import java.util.List;
@@ -7,7 +7,6 @@ import javax.ejb.Local;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.PersistenceContextType;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaQuery;
@@ -21,7 +20,7 @@ public class LogDao implements Serializable {
 
     private static final long serialVersionUID = 7393813264239969249L;
 
-    @PersistenceContext(unitName = "JSF_LOGIN_PU", type = PersistenceContextType.TRANSACTION)
+    @PersistenceContext(unitName = "JSF_LOGIN_PU")
     private EntityManager em;
 
     private Class<Log> entityClass;

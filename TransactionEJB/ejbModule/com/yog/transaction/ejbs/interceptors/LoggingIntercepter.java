@@ -9,46 +9,44 @@ import javax.interceptor.AroundInvoke;
 import javax.interceptor.Interceptor;
 import javax.interceptor.InvocationContext;
 
-import com.yog.transaction.ejbs.beans.LogDao;
-import com.yog.transaction.ejbs.beans.ScheduleManager;
+import com.yog.transaction.ejbs.daos.LogDao;
+import com.yog.transaction.ejbs.daos.ScheduleManager;
 import com.yog.transaction.ejbs.domains.Log;
 import com.yog.transaction.utils.DateUtil;
 
 @Interceptor
 public class LoggingIntercepter {
 
-    @Inject
-    private ScheduleManager sm;
+	@Inject
+	private ScheduleManager sm;
 
-    @EJB
-    private LogDao logDao;
+	@EJB
+	private LogDao logDao;
 
-    @AroundInvoke
-    @Asynchronous
-    public Object invoke(final InvocationContext ctx) throws Exception {
-	sm.schedule(new Runnable() {
-	    @Override
-	    public void run() {
-		try {
-		    String methodName = ctx.getMethod().getName();
-		    String className = ctx.getMethod().getDeclaringClass()
-			    .getName();
-		    Object parameters[] = ctx.getParameters();
+	@AroundInvoke
+	@Asynchronous
+	public Object invoke(final InvocationContext ctx) throws Exception {
+		sm.schedule(new Runnable() {
+			@Override
+			public void run() {
+				try {
+					String methodName = ctx.getMethod().getName();
+					String className = ctx.getMethod().getDeclaringClass().getName();
+					Object parameters[] = ctx.getParameters();
 
-		    Log log = new Log();
-		    log.setMethod(methodName);
-		    log.setMethodClass(className);
-		    log.setDateTime(DateUtil.getCurrentDateTime());
-		    log.setDateTime(DateUtil.getCurrentDateTime());
-		    log.setParameters(Arrays.toString(parameters)
-			    .replace("[", "").replace("]", ""));
-		    logDao.save(log);
-		} catch (Exception e) {
-		    e.printStackTrace();
-		}
-	    }
-	}, 0);
+					Log log = new Log();
+					log.setMethod(methodName);
+					log.setMethodClass(className);
+					log.setDateTime(DateUtil.getCurrentDateTime());
+					log.setDateTime(DateUtil.getCurrentDateTime());
+					log.setParameters(Arrays.toString(parameters).replace("[", "").replace("]", ""));
+					logDao.save(log);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}, 0);
 
-	return ctx.proceed();
-    }
+		return ctx.proceed();
+	}
 }

@@ -11,7 +11,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "log")
+@Table(name = "LOG")
 public class Log implements Serializable {
 
     private static final long serialVersionUID = 1L;

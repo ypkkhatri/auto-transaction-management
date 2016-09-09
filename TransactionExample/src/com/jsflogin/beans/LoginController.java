@@ -5,7 +5,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
 import com.jsflogin.util.SessionUtil;
-import com.yog.transaction.ejbs.beans.UserDao;
+import com.yog.transaction.ejbs.daos.UserDao;
 import com.yog.transaction.ejbs.domains.User;
 
 @RequestScoped
