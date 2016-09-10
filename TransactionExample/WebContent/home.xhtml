@@ -15,7 +15,7 @@
 	<h:form>
 		<h1>Welcome</h1>
 		<p>User: #{loginController.getUserName()}</p>
-		<p:commandLink id="logout" action="#{loginController.doLogout()}" value="Logout" />
+		<p:commandLink id="logout" action="#{userController.doLogout()}" value="Logout" />
 	</h:form>
 </h:body>
 </html>

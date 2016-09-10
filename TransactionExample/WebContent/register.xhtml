@@ -20,28 +20,20 @@
 			<h:panelGrid columns="2" cellpadding="5">
 				<h:outputLabel for="username" value="Username:" />
 				<p:inputText id="username"
-					value="#{loginController.usernameOrEmail}" required="true"
+					value="#{userController.usernameOrEmail}" required="true"
 					label="username" />
 
 				<h:outputLabel for="password" value="Password:" />
-				<p:password id="password" value="#{loginController.password}"
+				<p:password id="password" value="#{userController.password}"
 					required="true" label="password" />
 
 				<h:outputLabel for="email" value="Email:" />
-				<p:inputText id="email" value="#{loginController.email}"
+				<p:inputText id="email" value="#{userController.email}"
 					required="true" label="email" />
-
-				<h:outputLabel for="role" value="Role:" />
-				<p:selectOneMenu id="role" value="#{loginController.role}"
-					required="true">
-					<f:selectItem itemLabel="Select Role" itemValue="" />
-					<f:selectItem itemLabel="Admin" itemValue="ADMIN" />
-					<f:selectItem itemLabel="User" itemValue="USER" />
-				</p:selectOneMenu>
 
 				<f:facet name="footer">
 					<p:commandButton value="Register" update="growl"
-						action="#{loginController.register}" />
+						action="#{userController.register}" />
 					<h:outputLink title="Login" value="index.xhtml">
 						Login
 					</h:outputLink>

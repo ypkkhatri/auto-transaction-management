@@ -19,16 +19,16 @@
 			visible="true" modal="true" closable="false" draggable="false">
 			<h:panelGrid columns="2" cellpadding="5">
 				<h:outputLabel for="username" value="Username:" />
-				<p:inputText id="username" value="#{loginController.usernameOrEmail}"
+				<p:inputText id="username" value="#{userController.usernameOrEmail}"
 					required="true" label="username" />
 
 				<h:outputLabel for="password" value="Password:" />
-				<p:password id="password" value="#{loginController.password}"
+				<p:password id="password" value="#{userController.password}"
 					required="true" label="password" />
 
 				<f:facet name="footer">
 					<p:commandButton value="Login" update="growl"
-						action="#{loginController.doLogin}"
+						action="#{userController.doLogin}"
 						oncomplete="handleLoginRequest(xhr, status, args)" />
 
 					<h:outputLink title="Sign Up" value="register.xhtml">

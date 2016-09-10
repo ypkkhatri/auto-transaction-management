@@ -10,7 +10,7 @@ import com.yog.transaction.ejbs.domains.User;
 
 @RequestScoped
 @ManagedBean
-public class LoginController extends AbstractController {
+public class UserController extends AbstractController {
     
     @EJB
     private UserDao userDao;
